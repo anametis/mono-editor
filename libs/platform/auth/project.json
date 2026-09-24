@@ -1,0 +1,11 @@
+{
+  "name": "platform-auth",
+  "sourceRoot": "libs/platform/auth/src",
+  "projectType": "library",
+  "tags": ["scope:platform", "type:infrastructure", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/platform/auth"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "platform-observability",
+  "sourceRoot": "libs/platform/observability/src",
+  "projectType": "library",
+  "tags": ["scope:platform", "type:infrastructure", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/platform/observability"
+    }
+  }
+}

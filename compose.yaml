@@ -1,0 +1,52 @@
+services:
+  api:
+    build: { context: ., dockerfile: infra/containers/Dockerfile }
+    env_file: .env
+    environment: { NODE_ENV: production }
+    expose: ["4000"]
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "fetch('http://localhost:4000/health/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+  worker:
+    build: { context: ., dockerfile: infra/containers/Dockerfile }
+    command:
+      [
+        node,
+        --import,
+        ./dist/apps/worker/instrumentation.mjs,
+        dist/apps/worker/main.mjs,
+      ]
+    env_file: .env
+    environment: { NODE_ENV: production }
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "process.exit(Date.now()-Number(require('fs').readFileSync('/tmp/kara-worker-heartbeat','utf8'))<60000?0:1)",
+        ]
+      interval: 30s
+  web:
+    build: { context: ., dockerfile: infra/containers/Dockerfile }
+    command: [pnpm, exec, next, start, apps/web, --port, "3000"]
+    env_file: .env
+    environment: { NODE_ENV: production, API_INTERNAL_URL: "http://api:4000" }
+    expose: ["3000"]
+    restart: unless-stopped
+  proxy:
+    image: nginx:1.28-alpine
+    ports: ["127.0.0.1:8080:8080", "127.0.0.1:8081:8081"]
+    volumes:
+      - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./dist/apps/admin:/srv/admin:ro
+    depends_on: [api, web]
+    restart: unless-stopped

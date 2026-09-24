@@ -1,0 +1,11 @@
+{
+  "name": "auth-client",
+  "sourceRoot": "libs/shared/auth-client/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:client", "runtime:browser"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/shared/auth-client"
+    }
+  }
+}

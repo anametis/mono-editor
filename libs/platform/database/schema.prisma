@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+model User {
+  id String @id
+  name String
+  email String @unique
+  emailVerified Boolean @default(false)
+  image String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  username String? @unique
+  displayUsername String?
+  twoFactorEnabled Boolean @default(false)
+  sessions Session[]
+  accounts Account[]
+  twoFactor TwoFactor?
+  staff Staff?
+  bookmarks Bookmark[]
+}
+model Session {
+  id String @id
+  expiresAt DateTime
+  token String @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mfaVerified Boolean @default(false)
+  @@index([userId])
+}
+model Account {
+  id String @id
+  accountId String
+  providerId String
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken String?
+  refreshToken String?
+  idToken String?
+  accessTokenExpiresAt DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope String?
+  password String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([userId])
+}
+model Verification {
+  id String @id
+  identifier String
+  value String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([identifier])
+}
+model TwoFactor {
+  id String @id
+  secret String
+  backupCodes String
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  verified Boolean @default(true)
+  failedVerificationCount Int @default(0)
+  lockedUntil DateTime?
+}
+model RateLimit {
+ id String @id
+ key String @unique
+ count Int
+ lastRequest BigInt
+}
+model Staff {
+ userId String @id
+ user User @relation(fields:[userId], references:[id], onDelete:Cascade)
+ permissions String[]
+ createdAt DateTime @default(now())
+}
+model StaffInvitation {
+ id String @id @default(uuid())
+ email String
+ tokenHash String @unique
+ permissions String[]
+ expiresAt DateTime
+ acceptedAt DateTime?
+ invitedBy String
+ createdAt DateTime @default(now())
+}
+model AuditEvent {
+ id String @id @default(uuid())
+ actorId String
+ action String
+ resourceId String
+ createdAt DateTime @default(now())
+ @@index([createdAt])
+}
+model Post {
+ id String @id @default(uuid())
+ slug String @unique
+ ownerId String
+ assignedToId String?
+ publishedRevisionId String?
+ publishedRevision Revision? @relation("Published", fields:[publishedRevisionId, id], references:[id, postId], onDelete: NoAction, onUpdate: NoAction, map: "Post_published_revision_belongs_to_post")
+ revisions Revision[] @relation("Revisions")
+ bookmarks Bookmark[]
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ @@unique([publishedRevisionId, id])
+ @@index([ownerId, createdAt])
+ @@index([assignedToId])
+}
+enum RevisionStatus {
+ DRAFT
+ SUBMITTED
+ APPROVED
+ SCHEDULED
+ PUBLISHED
+}
+model Revision {
+ id String @id @default(uuid())
+ postId String
+ post Post @relation("Revisions", fields:[postId], references:[id], onDelete:Cascade)
+ publishedFor Post? @relation("Published")
+ title String
+ summary String
+ body String
+ status RevisionStatus @default(DRAFT)
+ version Int @default(1)
+ approvedBy String?
+ approvedAt DateTime?
+ scheduledAt DateTime?
+ publishedAt DateTime?
+ createdAt DateTime @default(now())
+ @@unique([id, postId], map: "Revision_id_post_unique")
+  @@index([status, scheduledAt])
+ @@index([postId, createdAt])
+}
+model Bookmark {
+ userId String
+ postId String
+ post Post @relation(fields:[postId], references:[id], onDelete:Cascade)
+ user User @relation(fields:[userId], references:[id], onDelete:Cascade)
+ createdAt DateTime @default(now())
+ @@id([userId,postId])
+ @@index([userId,createdAt])
+}

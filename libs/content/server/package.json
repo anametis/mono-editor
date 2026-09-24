@@ -1,0 +1,15 @@
+{
+  "name": "@kara/content-server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@kara/permissions": "workspace:^",
+    "@kara/platform-auth": "workspace:^",
+    "@kara/platform-database": "workspace:^",
+    "@nestjs/throttler": "6.7.0"
+  }
+}

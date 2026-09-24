@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@kara/content-server": ["libs/content/server/src/index.ts"],
+      "@kara/identity-server": ["libs/identity/server/src/index.ts"],
+      "@kara/interactions-server": ["libs/interactions/server/src/index.ts"],
+      "@kara/platform-auth": ["libs/platform/auth/src/index.ts"],
+      "@kara/platform-database": ["libs/platform/database/src/index.ts"],
+      "@kara/platform-observability": [
+        "libs/platform/observability/src/index.ts"
+      ],
+      "@kara/api-client": ["libs/shared/api-client/src/index.ts"],
+      "@kara/auth-client": ["libs/shared/auth-client/src/index.ts"],
+      "@kara/ui": ["libs/shared/ui/src/index.tsx"],
+      "@kara/tokens": ["libs/shared/tokens/src/index.ts"],
+      "@kara/permissions": ["libs/shared/permissions/src/index.ts"],
+      "@kara/tokens/styles.css": ["libs/shared/tokens/src/styles.css"]
+    }
+  }
+}

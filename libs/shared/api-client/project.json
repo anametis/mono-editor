@@ -1,0 +1,21 @@
+{
+  "name": "api-client",
+  "sourceRoot": "libs/shared/api-client/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:client", "runtime:universal"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/shared/api-client"
+    },
+    "generate": {
+      "command": "openapi-typescript docs/architecture/openapi.json -o libs/shared/api-client/src/schema.d.ts",
+      "dependsOn": [
+        {
+          "projects": ["api"],
+          "target": "openapi"
+        }
+      ],
+      "outputs": ["{projectRoot}/src/schema.d.ts"]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "ui",
+  "sourceRoot": "libs/shared/ui/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:ui", "runtime:react"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/shared/ui"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+name: Verify
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: kara_test
+          POSTGRES_USER: kara
+          POSTGRES_PASSWORD: integration-only
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U kara -d kara_test" --health-interval 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: {version: 10.6.5}
+      - uses: actions/setup-node@v4
+        with: {node-version: 22, cache: pnpm}
+      - run: pnpm install --frozen-lockfile
+      - name: Configure isolated test environment
+        run: |
+          cp .env.example .env
+          echo 'DATABASE_URL=postgresql://kara:integration-only@localhost:5432/kara_test' >> .env
+          echo "BETTER_AUTH_SECRET=$(openssl rand -hex 32)" >> .env
+      - run: pnpm db:generate && pnpm db:migrate
+      - run: pnpm contracts && git diff --exit-code -- docs/architecture/openapi.json libs/shared/api-client/src/schema.d.ts
+      - run: pnpm typecheck && pnpm lint
+      - run: pnpm nx run-many -t test -p content-server admin && pnpm nx run api:integration
+      - run: pnpm nx run-many -t build -p api worker admin web --parallel=2
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm nx run admin:e2e
+      - run: pnpm test:cache
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: {name: test-results, path: test-results/}

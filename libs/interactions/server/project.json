@@ -1,0 +1,11 @@
+{
+  "name": "interactions-server",
+  "sourceRoot": "libs/interactions/server/src",
+  "projectType": "library",
+  "tags": ["scope:interactions", "type:backend", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/interactions/server"
+    }
+  }
+}

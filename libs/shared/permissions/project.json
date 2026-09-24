@@ -1,0 +1,11 @@
+{
+  "name": "permissions",
+  "sourceRoot": "libs/shared/permissions/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:util", "runtime:universal"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/shared/permissions"
+    }
+  }
+}

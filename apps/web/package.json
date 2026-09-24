@@ -1,0 +1,11 @@
+{
+  "name": "@kara/web",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@kara/api-client": "workspace:^",
+    "@kara/auth-client": "workspace:^",
+    "@kara/tokens": "workspace:^",
+    "@kara/ui": "workspace:^"
+  }
+}

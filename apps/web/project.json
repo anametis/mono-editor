@@ -1,0 +1,20 @@
+{
+  "name": "web",
+  "sourceRoot": "apps/web/src",
+  "projectType": "application",
+  "tags": ["scope:web", "type:app", "runtime:next"],
+  "targets": {
+    "lint": {
+      "command": "eslint apps/web"
+    },
+    "build": {
+      "command": "pnpm build:web",
+      "outputs": ["{workspaceRoot}/apps/web/.next"],
+      "dependsOn": ["api-client:generate"]
+    },
+    "serve": {
+      "command": "pnpm dev:web",
+      "cache": false
+    }
+  }
+}

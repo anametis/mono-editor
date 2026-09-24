@@ -1,0 +1,2 @@
+import { defineConfig } from '@playwright/test';
+export default defineConfig({testDir:'./tests/e2e',fullyParallel:false,workers:1,timeout:60000,use:{baseURL:'http://localhost:4200',trace:'retain-on-failure',channel:process.env.PLAYWRIGHT_CHANNEL},webServer:[{command:'pnpm dev:api',url:'http://localhost:4000/health/ready',reuseExistingServer:!process.env.CI},{command:'pnpm dev:admin',url:'http://localhost:4200',reuseExistingServer:!process.env.CI},{command:'pnpm dev:web',url:'http://localhost:3000',reuseExistingServer:!process.env.CI}],reporter:[['list']]});

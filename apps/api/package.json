@@ -1,0 +1,13 @@
+{
+  "name": "@kara/api",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@kara/content-server": "workspace:^",
+    "@kara/identity-server": "workspace:^",
+    "@kara/interactions-server": "workspace:^",
+    "@kara/platform-auth": "workspace:^",
+    "@kara/platform-database": "workspace:^",
+    "@kara/platform-observability": "workspace:^"
+  }
+}

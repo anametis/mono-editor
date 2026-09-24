@@ -1,0 +1,28 @@
+{
+  "name": "admin",
+  "sourceRoot": "apps/admin/src",
+  "projectType": "application",
+  "tags": ["scope:admin", "type:app", "runtime:browser"],
+  "targets": {
+    "lint": {
+      "command": "eslint apps/admin"
+    },
+    "build": {
+      "command": "vite build --config apps/admin/vite.config.ts",
+      "outputs": ["{workspaceRoot}/dist/apps/admin"],
+      "dependsOn": ["api-client:generate"]
+    },
+    "serve": {
+      "command": "vite --config apps/admin/vite.config.ts",
+      "cache": false
+    },
+    "e2e": {
+      "command": "pnpm test:e2e",
+      "cache": false
+    },
+    "test": {
+      "command": "vitest run",
+      "cache": true
+    }
+  }
+}

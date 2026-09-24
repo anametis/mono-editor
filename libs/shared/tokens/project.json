@@ -1,0 +1,11 @@
+{
+  "name": "tokens",
+  "sourceRoot": "libs/shared/tokens/src",
+  "projectType": "library",
+  "tags": ["scope:shared", "type:util", "runtime:universal"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/shared/tokens"
+    }
+  }
+}

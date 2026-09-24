@@ -1,0 +1,11 @@
+{
+  "name": "identity-server",
+  "sourceRoot": "libs/identity/server/src",
+  "projectType": "library",
+  "tags": ["scope:identity", "type:backend", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/identity/server"
+    }
+  }
+}

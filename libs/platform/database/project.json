@@ -1,0 +1,19 @@
+{
+  "name": "platform-database",
+  "sourceRoot": "libs/platform/database/src",
+  "projectType": "library",
+  "tags": ["scope:platform", "type:infrastructure", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/platform/database"
+    },
+    "generate": {
+      "command": "prisma generate",
+      "cache": false
+    },
+    "migrate": {
+      "command": "prisma migrate deploy",
+      "cache": false
+    }
+  }
+}

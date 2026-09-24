@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "tags": ["scope:platform", "type:app", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint apps/api"
+    },
+    "build": {
+      "command": "node tools/build-server.mjs api",
+      "outputs": ["{workspaceRoot}/dist/apps/api"],
+      "dependsOn": ["api-client:generate"]
+    },
+    "serve": {
+      "command": "pnpm dev:api",
+      "cache": false
+    },
+    "openapi": {
+      "command": "node tools/compile.mjs tools/openapi/generate.ts dist/tools/openapi.mjs && node --env-file=.env dist/tools/openapi.mjs",
+      "cache": false
+    },
+    "integration": {
+      "command": "pnpm test:integration",
+      "cache": false
+    }
+  }
+}

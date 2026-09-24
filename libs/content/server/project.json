@@ -1,0 +1,15 @@
+{
+  "name": "content-server",
+  "sourceRoot": "libs/content/server/src",
+  "projectType": "library",
+  "tags": ["scope:content", "type:backend", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint libs/content/server"
+    },
+    "test": {
+      "command": "pnpm test",
+      "cache": true
+    }
+  }
+}

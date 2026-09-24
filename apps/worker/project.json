@@ -1,0 +1,20 @@
+{
+  "name": "worker",
+  "sourceRoot": "apps/worker/src",
+  "projectType": "application",
+  "tags": ["scope:platform", "type:app", "runtime:node"],
+  "targets": {
+    "lint": {
+      "command": "eslint apps/worker"
+    },
+    "build": {
+      "command": "node tools/build-server.mjs worker",
+      "outputs": ["{workspaceRoot}/dist/apps/worker"],
+      "dependsOn": ["api-client:generate"]
+    },
+    "serve": {
+      "command": "pnpm dev:worker",
+      "cache": false
+    }
+  }
+}

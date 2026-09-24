@@ -1,0 +1,10 @@
+{
+  "name": "@kara/worker",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@kara/content-server": "workspace:^",
+    "@kara/platform-database": "workspace:^",
+    "@kara/platform-observability": "workspace:^"
+  }
+}
