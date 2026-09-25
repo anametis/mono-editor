@@ -2,10 +2,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "defaultBase": "main",
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [
       "{workspaceRoot}/tsconfig.base.json",
       "{workspaceRoot}/pnpm-lock.yaml",
@@ -16,10 +13,7 @@
   "targetDefaults": {
     "build": {
       "cache": true,
-      "inputs": [
-        "default",
-        "^default"
-      ]
+      "inputs": ["default", "^default"]
     },
     "lint": {
       "cache": true
@@ -45,6 +39,18 @@
         "devTargetName": "serve",
         "startTargetName": "start"
       }
+    },
+    {
+      "plugin": "@nx/storybook/plugin",
+      "options": {
+        "serveStorybookTargetName": "storybook",
+        "buildStorybookTargetName": "build-storybook",
+        "testStorybookTargetName": "test-storybook",
+        "staticStorybookTargetName": "static-storybook",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
     }
-  ]
+  ],
+  "analytics": false
 }

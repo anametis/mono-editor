@@ -6,6 +6,22 @@
   "targets": {
     "lint": {
       "command": "eslint libs/shared/ui"
+    },
+    "test-storybook": {
+      "command": "playwright test --config libs/shared/ui/playwright.config.ts",
+      "dependsOn": ["build-storybook"],
+      "cache": false
+    },
+    "build-storybook": {
+      "outputs": ["{workspaceRoot}/dist/storybook/ui"],
+      "options": {
+        "output-dir": "../../../dist/storybook/ui"
+      }
+    },
+    "static-storybook": {
+      "options": {
+        "staticFilePath": "dist/storybook/ui"
+      }
     }
   }
 }

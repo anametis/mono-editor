@@ -38,6 +38,8 @@ Creators can edit owned or assigned posts. A different reviewer approves each re
 
 ## Verify
 
+Shared component stories and browser-testing conventions are documented in [testing](docs/architecture/testing.md). Run `pnpm nx run ui:storybook` to browse the shared UI, or `pnpm nx run ui:test-storybook` to build it and test its stories with Playwright.
+
 ```sh
 pnpm typecheck
 pnpm lint
