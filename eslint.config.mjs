@@ -1,4 +1,5 @@
 import nx from "@nx/eslint-plugin";
+import { plugin as shadcn } from "@shadcn/lint";
 import tseslint from "typescript-eslint";
 import { constraints, nodePackages } from "./tools/eslint/boundaries.mjs";
 export default [
@@ -13,6 +14,10 @@ export default [
     ],
   },
   ...tseslint.configs.recommended,
+  {
+    files: ["apps/{admin,web}/src/**/*.{ts,tsx}", "libs/shared/ui/src/**/*.{ts,tsx}"],
+    plugins: { shadcn },
+  },
  {files:["apps/admin/src/**/*.{ts,tsx}","libs/shared/{ui,auth-client,api-client,permissions,tokens}/src/**/*.{ts,tsx}"],rules:{"no-restricted-imports":["error",{patterns:nodePackages}]}},
  {files:["apps/web/src/**/*.{ts,tsx}"],rules:{"no-restricted-imports":["error",{patterns:["@nestjs/*","@prisma/*","prisma","better-auth","better-auth/adapters/*","better-auth/node"]}]}},
   {

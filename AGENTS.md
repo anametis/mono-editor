@@ -22,3 +22,5 @@
 
 
 <!-- nx configuration end-->
+
+After making changes, run `pnpm lint` and fix lint errors.
