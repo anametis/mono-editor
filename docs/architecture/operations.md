@@ -1,5 +1,7 @@
 # Operations
 
+[Handbook](../README.md) · [Development commands](../development.md) · [Runtime state](overview.md)
+
 ## Configuration
 
 Copy `.env.example` and configure:
@@ -14,6 +16,10 @@ Copy `.env.example` and configure:
 - `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME`: optional OTLP collector and distinct api/worker service name.
 
 Applications fail closed if required configuration is absent. Browser code never reads server secrets. API request logs redact authorization/cookies and omit bodies and query strings.
+
+Additional runtime settings are `PORT` (API, default 4000), `WORKER_HEARTBEAT` (worker heartbeat file, default `/tmp/kara-worker-heartbeat`), and `LOG_LEVEL` (Pino, default `info`). If you change the heartbeat path or API port, also update health probes and routing. The local Next wrapper fixes its preview port at 3000. Admin's local API proxy is fixed at localhost:4000.
+
+Root `.env` is loaded explicitly by API/worker development commands and the Next wrapper; Compose injects it into containers. Do not assume every raw framework command loads that file. The API requires database and authentication/mail configuration. Worker application startup uses the database; its Nx build still has API contract-generation prerequisites.
 
 ## Build and launch
 
@@ -58,3 +64,53 @@ LOAD_ORIGIN=https://staging.example.com LOAD_CONCURRENCY=20 LOAD_REQUESTS=1000 n
 Provide `LOAD_COOKIE` for a disposable test account to include authenticated traffic. This is secret input; never log it. The script separates public cache hits, uncached rendering, and authenticated reads and reports errors and p95 latency. Increase load gradually against measured peak traffic, not daily user count.
 
 Field targets: p75 LCP <=2.5s, INP <=200ms, CLS <=0.1. Lab/browser checks do not establish these field percentiles. Configure field monitoring and real alert destinations before public launch. No external fonts, trackers, or image uploads are included in this slice.
+
+## Observability and incident diagnosis
+
+Compose loads the API and worker instrumentation entrypoints before application code. OTLP export requires `OTEL_EXPORTER_OTLP_ENDPOINT`; merely setting that variable on the ordinary local `dev:api` or `dev:worker` command does not preload instrumentation. For local telemetry diagnosis, build the app and launch it with the instrumentation module:
+
+```sh
+node --env-file=.env --import ./dist/apps/api/instrumentation.mjs dist/apps/api/main.mjs
+```
+
+Use the corresponding worker paths to instrument the worker. Give each process an appropriate `OTEL_SERVICE_NAME`. Metrics include `kara.publications`, `kara.worker.duration` (ms), `kara.worker.failures`, and `kara.publication.lag` (seconds). Request logs contain generated request IDs and sanitized request details; no response correlation header is explicitly configured.
+
+Initial read-only diagnosis:
+
+```sh
+docker compose ps
+docker compose logs --tail=100 api worker web proxy
+docker compose exec api node -e "fetch('http://localhost:4000/health/ready').then(async r => console.log(r.status, await r.text()))"
+```
+
+Treat log output as sensitive operational data. Do not paste cookies, secrets, invitation links, or private content into public incident reports.
+
+| Symptom                       | Diagnose                                                                                          | Recovery and verification                                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| API not ready                 | Check database reachability, connection budget, credentials, migration status, API logs           | Restore dependency availability; confirm readiness and representative public/private requests                       |
+| Scheduled publication delayed | Check worker process/heartbeat, overdue lag, clock, database locks and worker errors              | Restore worker/database health; confirm due revisions progress and lag falls; avoid manual state edits              |
+| Repeated worker failures      | Inspect the failing transaction and constraint/error details                                      | Fix the underlying data/code issue through a reviewed change; worker retries discovery automatically                |
+| Public page appears old       | Inspect `X-Cache`, request type/cookies, 60 second TTL, worker lag, and current published pointer | Verify via an uncached request and then a new public HTML request; do not add another cache layer                   |
+| OTP/reset mail unavailable    | Check SMTP connectivity, credentials, provider errors, and rate limits                            | Restore mail delivery; request a fresh code or use a previously saved recovery code; never disable MFA to bypass it |
+| Editorial forbidden           | Check email verification, Staff permissions, current MFA enablement and session verification      | Complete the intended access flow; recheck a privileged request                                                     |
+| Proxy 502                     | Check API/web process health and private routing                                                  | Restore origin; verify both public and private routes; expired HTML is deliberately not served                      |
+
+An unhealthy Compose container is a signal, not a configured remediation workflow. `restart: unless-stopped` restarts exited processes; it does not automatically repair a running process solely because its healthcheck fails. Supply monitoring and an operational response outside Compose.
+
+## Release, rollback, and recovery
+
+Before release, record the source revision, image identity, migration set, environment changes, operator, and validation evidence. The repository's CI verifies code; it does not publish or deploy a release. Run integration/browser/backup checks only with the isolated `kara_test` database, never against production.
+
+1. Review the migration and compatibility with the currently running version. Back up the database according to the deployment's recovery policy and verify that a recent restore drill exists.
+2. Produce and retain reproducible application artifacts from the reviewed revision. Keep admin assets and the API/web/worker artifacts from the same compatible release.
+3. Apply reviewed migrations once through the deployment identity before new traffic reaches code that requires them. Use compatible additive changes for mixed-version rollouts.
+4. Launch the release, then check API readiness, worker heartbeat and lag, public rendering, staff MFA, a controlled publication flow, and private cache isolation.
+5. Observe error rates and latency against the deployment's agreed thresholds before declaring completion.
+
+If a release is faulty, restore the prior application artifacts only when they remain compatible with the deployed schema. Retain the previous image and admin bundle for this purpose; the supplied Compose file does not implement release version selection or automatic rollback. Do not delete applied migrations or assume Prisma supplies a safe reverse migration. Use a reviewed forward correction where possible.
+
+For data recovery, restore backups/PITR into an isolated database first, validate schema and application invariants, assess the data loss window, and coordinate a controlled cutover. Do not restore over the only live copy as a diagnostic experiment. Record the achieved recovery time and data loss, and reconcile writes around the cutover. RPO, RTO, backup retention, encryption/key access, and failover ownership must be defined by the deployment operator; they are not configured here.
+
+## Production readiness boundaries
+
+Before exposing the service, supply named release/incident owners, TLS and hostname configuration, trusted proxy addresses, database/SMTP services, secret management, alert destinations, capacity measurements, retention policies, and tested recovery procedures. Review security and accessibility requirements against the intended audience. No production deployment, high availability guarantee, tenant isolation, autoscaling policy, or compliance certification is supplied by these application manifests.

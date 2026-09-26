@@ -2,6 +2,23 @@
 
 Nx publishing workspace: React editorial app, Next.js public journal, NestJS API, PostgreSQL publication worker.
 
+Start with the [engineering handbook](docs/README.md) for architecture and state diagrams, the component catalog, API and security guides, and operational procedures. The [development guide](docs/development.md) covers setup, project selection, builds, tests, and troubleshooting.
+
+## Run a single project
+
+After the setup below, choose the project you need:
+
+```sh
+pnpm nx serve admin   # Editorial UI, port 4200
+pnpm nx serve web     # Public journal, port 3000
+pnpm nx serve api     # API, port 4000
+pnpm nx serve worker  # Scheduled publication, no HTTP port
+```
+
+Each command starts only that project. Frontends still need the API for live data and authentication; the worker needs PostgreSQL. For shared UI work without backend services, run `pnpm nx run ui:storybook`. API and worker serve commands build once; restart them after edits.
+
+Use `pnpm nx run admin:build` or `pnpm nx run admin:lint` for a selected project's task. Builds can run prerequisite contract-generation tasks, but do not start other apps. See the [task/dependency matrix](docs/development.md#run-exactly-one-project).
+
 ## Run locally
 
 Requires Node 22.12+, pnpm 10, PostgreSQL, and an SMTP development inbox (for example Mailpit on port 1025). PostgreSQL and SMTP are external services; application Compose does not own production data.
