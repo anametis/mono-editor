@@ -1,0 +1,1679 @@
+{
+  "database": "postgresql",
+  "enums": [],
+  "notes": [],
+  "relationships": [
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 0,
+      "name": "fk_user_roles_user_id_users",
+      "startFieldId": "ey-WA-GJR1VVIE8R_5lmn",
+      "startTableId": "B862vgchyjPQ0b9gfkj10",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "UZ832pKia5qysV2WEFGxA",
+      "endTableId": "74YnMzDmJnoJfzLF57wG0",
+      "id": 1,
+      "name": "fk_user_roles_role_id_roles",
+      "startFieldId": "xj8pZNZX0LHYzylMjZxW9",
+      "startTableId": "B862vgchyjPQ0b9gfkj10",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "UZ832pKia5qysV2WEFGxA",
+      "endTableId": "74YnMzDmJnoJfzLF57wG0",
+      "id": 2,
+      "name": "fk_role_permissions_role_id_roles",
+      "startFieldId": "qOWIcOM96snyQHPbKk0EL",
+      "startTableId": "O3Op05FsgCfnV_lfD9Ike",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "GuAtWtlyauGfwGuHRy8ji",
+      "endTableId": "hfHhQ2eZrrUezhIZpAdLA",
+      "id": 3,
+      "name": "fk_role_permissions_permission_id_permissions",
+      "startFieldId": "VCuQFdgEkdyksp83Wqw2D",
+      "startTableId": "O3Op05FsgCfnV_lfD9Ike",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 4,
+      "name": "fk_sessions_user_id_users",
+      "startFieldId": "GjJ7C4qesDJC8IebrCyzr",
+      "startTableId": "YUU6dFTv4yESYIlqGUEmP",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 5,
+      "name": "fk_articles_author_id_users",
+      "startFieldId": "4UIWfSphoqdJAMT-Aqw32",
+      "startTableId": "giwkkRepKM2oB4Fr03ecL",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "gkXePwlk7GoSJzBwpEmbU",
+      "endTableId": "giwkkRepKM2oB4Fr03ecL",
+      "id": 6,
+      "name": "fk_article_revisions_article_id_articles",
+      "startFieldId": "ZY7c4Xm-Eom2gtdgcHJYP",
+      "startTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 7,
+      "name": "fk_article_revisions_editor_id_users",
+      "startFieldId": "wMf83e-DgGQQGetSLbrx0",
+      "startTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "one_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+      "endTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "fields": [
+        {
+          "endFieldId": "ZY7c4Xm-Eom2gtdgcHJYP",
+          "startFieldId": "gkXePwlk7GoSJzBwpEmbU"
+        },
+        {
+          "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+          "startFieldId": "_tk_wbU8xf4jqQUpYel9d"
+        }
+      ],
+      "id": 8,
+      "name": "published_revision_belongs_to_article",
+      "startFieldId": "_tk_wbU8xf4jqQUpYel9d",
+      "startTableId": "giwkkRepKM2oB4Fr03ecL",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+      "endTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "id": 9,
+      "name": "fk_review_decisions_revision_id_article_revisions",
+      "startFieldId": "ZWA3rwSml8hSkfOrs-sXl",
+      "startTableId": "DZVI45YA2YaWm9waV3KWL",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 10,
+      "name": "fk_review_decisions_reviewer_id_users",
+      "startFieldId": "mfmiOaC4fI159zyN8XiQr",
+      "startTableId": "DZVI45YA2YaWm9waV3KWL",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "gkXePwlk7GoSJzBwpEmbU",
+      "endTableId": "giwkkRepKM2oB4Fr03ecL",
+      "id": 11,
+      "name": "fk_publication_history_article_id_articles",
+      "startFieldId": "Iqg91CKJme_55ZtprJIuf",
+      "startTableId": "b-s4UuLH6EhrCpPIFPUX4",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+      "endTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "id": 12,
+      "name": "fk_publication_history_revision_id_article_revisions",
+      "startFieldId": "hnJishC3vd0cL_sDsz7sc",
+      "startTableId": "b-s4UuLH6EhrCpPIFPUX4",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 13,
+      "name": "fk_publication_history_actor_id_users",
+      "startFieldId": "4oO9LkpbpR_YGNqyPVHMW",
+      "startTableId": "b-s4UuLH6EhrCpPIFPUX4",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "ZY7c4Xm-Eom2gtdgcHJYP",
+      "endTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "fields": [
+        {
+          "endFieldId": "ZY7c4Xm-Eom2gtdgcHJYP",
+          "startFieldId": "Iqg91CKJme_55ZtprJIuf"
+        },
+        {
+          "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+          "startFieldId": "hnJishC3vd0cL_sDsz7sc"
+        }
+      ],
+      "id": 14,
+      "name": "fk_publication_history_article_id_article_revisions",
+      "startFieldId": "Iqg91CKJme_55ZtprJIuf",
+      "startTableId": "b-s4UuLH6EhrCpPIFPUX4",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "gA1yLYTrP-nD3w_Xtfzkd",
+      "endTableId": "DZVI45YA2YaWm9waV3KWL",
+      "fields": [
+        {
+          "endFieldId": "gA1yLYTrP-nD3w_Xtfzkd",
+          "startFieldId": "CEO9S1jXVkfIsnYsZdTb-"
+        },
+        {
+          "endFieldId": "ZWA3rwSml8hSkfOrs-sXl",
+          "startFieldId": "hnJishC3vd0cL_sDsz7sc"
+        }
+      ],
+      "id": 15,
+      "name": "fk_publication_history_approval_id_review_decisions",
+      "startFieldId": "CEO9S1jXVkfIsnYsZdTb-",
+      "startTableId": "b-s4UuLH6EhrCpPIFPUX4",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "gkXePwlk7GoSJzBwpEmbU",
+      "endTableId": "giwkkRepKM2oB4Fr03ecL",
+      "id": 16,
+      "name": "fk_article_redirects_article_id_articles",
+      "startFieldId": "cqjelWIq_vpZ2UJ6g2V63",
+      "startTableId": "19OAYKeFv51t-nJKMhH-K",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+      "endTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "id": 17,
+      "name": "fk_revision_categories_revision_id_article_revisions",
+      "startFieldId": "OxfEfgmKr_lI7YZJ3aVJC",
+      "startTableId": "j1I-1iYivS8E3FLGHqCk5",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "QLFyl1h-J3r2s7BqN3Z7M",
+      "endTableId": "qQqBNREaxDFOI7s2ZeC9q",
+      "id": 18,
+      "name": "fk_revision_categories_category_id_categories",
+      "startFieldId": "oaJ3DJBIr-6Y_gLOH2ex1",
+      "startTableId": "j1I-1iYivS8E3FLGHqCk5",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 19,
+      "name": "fk_media_assets_uploaded_by_users",
+      "startFieldId": "Vg9kH-FdQnA3z4-Vz6vS_",
+      "startTableId": "jOii2g_AbQ6rGRqULZoQH",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "Gn4h7BHSAIvdseXNIgyot",
+      "endTableId": "xhRLeCb5ueAuHRbXPdK3Y",
+      "id": 20,
+      "name": "fk_revision_media_revision_id_article_revisions",
+      "startFieldId": "DQqT7TAB1Md-mqkQJLKMW",
+      "startTableId": "BisoZ7h4fSJhGg0J-h36m",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "w0AwHeZ4zjMPdTqOf4UDp",
+      "endTableId": "jOii2g_AbQ6rGRqULZoQH",
+      "id": 21,
+      "name": "fk_revision_media_media_id_media_assets",
+      "startFieldId": "YZHS-Zm5iukZ7BvsHKh_a",
+      "startTableId": "BisoZ7h4fSJhGg0J-h36m",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "2R74F9KN4GRvfg0dD1Doh",
+      "endTableId": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "id": 22,
+      "name": "fk_audit_events_actor_id_users",
+      "startFieldId": "l10A76FhSLisiaoOopYLa",
+      "startTableId": "fr9SzTsFkRgtixf2Nadn_",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "gkXePwlk7GoSJzBwpEmbU",
+      "endTableId": "giwkkRepKM2oB4Fr03ecL",
+      "id": 23,
+      "name": "fk_audit_events_article_id_articles",
+      "startFieldId": "y_pv2o2kmEo-k_QESorfz",
+      "startTableId": "fr9SzTsFkRgtixf2Nadn_",
+      "updateConstraint": "No action"
+    },
+    {
+      "cardinality": "many_to_one",
+      "deleteConstraint": "No action",
+      "endFieldId": "3N0FCHfjfqmAK1soZfack",
+      "endTableId": "b-s4UuLH6EhrCpPIFPUX4",
+      "id": 24,
+      "name": "fk_outbox_events_publication_id_publication_history",
+      "startFieldId": "SJ11jzxTdAOq7LGyvlVYk",
+      "startTableId": "DuT_OY4mHmUhzNrz9Ux-_",
+      "updateConstraint": "No action"
+    }
+  ],
+  "subjectAreas": [],
+  "tables": [
+    {
+      "color": "#8b5cf6",
+      "comment": "Authentication credentials and MFA enrollment belong to the chosen auth system. NestJS enforces access and account status.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "2R74F9KN4GRvfg0dD1Doh",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "HXi-z1fQUB9I2KYNsoyWa",
+          "increment": false,
+          "name": "email",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "9PRabdImYNcvey8Uhxfsb",
+          "increment": false,
+          "name": "display_name",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "sCF9bIqEpU_MFpitbQUUC",
+          "increment": false,
+          "name": "identity_ref",
+          "notNull": false,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "3Q_jhNwXZcK5pLfowULXL",
+          "increment": false,
+          "name": "disabled_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "iUj_qQWMnHj8SGM126bm6",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "PZ2wgdXmJQ5XhUF2J1Ryx",
+      "indices": [],
+      "name": "users",
+      "uniqueConstraints": [],
+      "x": 48,
+      "y": 120,
+      "width": 350
+    },
+    {
+      "color": "#8b5cf6",
+      "comment": "Suggested roles: Author, Reviewer, Publisher, Administrator. Grant actions explicitly; administrator does not automatically publish.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "UZ832pKia5qysV2WEFGxA",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "vc9yYF866fOcZ30BRt0yN",
+          "increment": false,
+          "name": "name",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        }
+      ],
+      "id": "74YnMzDmJnoJfzLF57wG0",
+      "indices": [],
+      "name": "roles",
+      "uniqueConstraints": [],
+      "x": 908,
+      "y": 120,
+      "width": 350
+    },
+    {
+      "color": "#8b5cf6",
+      "comment": "",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "GuAtWtlyauGfwGuHRy8ji",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "y-q1t4VkTHS-Ba5oAK69b",
+          "increment": false,
+          "name": "action",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        }
+      ],
+      "id": "hfHhQ2eZrrUezhIZpAdLA",
+      "indices": [],
+      "name": "permissions",
+      "uniqueConstraints": [],
+      "x": 1768,
+      "y": 120,
+      "width": 350
+    },
+    {
+      "color": "#8b5cf6",
+      "comment": "",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "ey-WA-GJR1VVIE8R_5lmn",
+          "increment": false,
+          "name": "user_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "xj8pZNZX0LHYzylMjZxW9",
+          "increment": false,
+          "name": "role_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        }
+      ],
+      "id": "B862vgchyjPQ0b9gfkj10",
+      "indices": [],
+      "name": "user_roles",
+      "uniqueConstraints": [],
+      "x": 478,
+      "y": 120,
+      "width": 350
+    },
+    {
+      "color": "#8b5cf6",
+      "comment": "",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "qOWIcOM96snyQHPbKk0EL",
+          "increment": false,
+          "name": "role_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "VCuQFdgEkdyksp83Wqw2D",
+          "increment": false,
+          "name": "permission_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        }
+      ],
+      "id": "O3Op05FsgCfnV_lfD9Ike",
+      "indices": [],
+      "name": "role_permissions",
+      "uniqueConstraints": [],
+      "x": 1338,
+      "y": 120,
+      "width": 350
+    },
+    {
+      "color": "#8b5cf6",
+      "comment": "Store token hashes, never raw tokens. Original SQL has a partial user index WHERE revoked_at IS NULL; retain the predicate in migrations.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "m9HNu1wCW2YRxI_6YStFA",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "GjJ7C4qesDJC8IebrCyzr",
+          "increment": false,
+          "name": "user_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "Ga8xZ9JxP3otvZMSTo-0w",
+          "increment": false,
+          "name": "token_hash",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "N1w4GxaQ4Vk8vO9DD4V19",
+          "increment": false,
+          "name": "mfa_verified_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "Pvg-PBwEjXlthmTEtYLk8",
+          "increment": false,
+          "name": "expires_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "1BhViXl3P0DpVJv1T58wt",
+          "increment": false,
+          "name": "revoked_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "eBFfcdBqxbw5N2t5hoHaA",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "YUU6dFTv4yESYIlqGUEmP",
+      "indices": [
+        {
+          "fields": ["user_id"],
+          "id": 0,
+          "name": "active_sessions_by_user",
+          "unique": false
+        }
+      ],
+      "name": "sessions",
+      "uniqueConstraints": [],
+      "x": 48,
+      "y": 470,
+      "width": 350
+    },
+    {
+      "color": "#10b981",
+      "comment": "Live content comes from published_revision_id. The composite FK ensures this revision belongs to this article. The article/revision FK cycle is intentional; create the final FK with ALTER TABLE, as in cms-schema.sql.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "gkXePwlk7GoSJzBwpEmbU",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "4UIWfSphoqdJAMT-Aqw32",
+          "increment": false,
+          "name": "author_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "NFKZgnxINNoQcUGk5ubKr",
+          "increment": false,
+          "name": "slug",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "_tk_wbU8xf4jqQUpYel9d",
+          "increment": false,
+          "name": "published_revision_id",
+          "notNull": false,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "0",
+          "id": "ZQD4uRxjdK0KsWczifmKW",
+          "increment": false,
+          "name": "publication_version",
+          "notNull": true,
+          "primary": false,
+          "type": "BIGINT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "thl0eIFuL8j9V3DVLpNMM",
+          "increment": false,
+          "name": "withdrawn_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "xRpzX-wuqy1tH8xvZZJlC",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "giwkkRepKM2oB4Fr03ecL",
+      "indices": [],
+      "name": "articles",
+      "uniqueConstraints": [],
+      "x": 478,
+      "y": 470,
+      "width": 350
+    },
+    {
+      "color": "#10b981",
+      "comment": "Immutable content snapshots. A new draft does not alter the live revision. Category and media assignments are revision-scoped.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "Gn4h7BHSAIvdseXNIgyot",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "ZY7c4Xm-Eom2gtdgcHJYP",
+          "increment": false,
+          "name": "article_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "wMf83e-DgGQQGetSLbrx0",
+          "increment": false,
+          "name": "editor_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "VZoW1TjuFSihKWdS5EEca",
+          "increment": false,
+          "name": "revision_number",
+          "notNull": true,
+          "primary": false,
+          "type": "INTEGER",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "dJdg6BzkdzuMNbmDyx2I8",
+          "increment": false,
+          "name": "title",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "NejR-Cf4FLUXH4-nmWeKG",
+          "increment": false,
+          "name": "excerpt",
+          "notNull": false,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "mA90Glpb0kxL0Y4aQqOJl",
+          "increment": false,
+          "name": "body",
+          "notNull": true,
+          "primary": false,
+          "type": "JSONB",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "{}",
+          "id": "gNOc92DLHcp7WcBT1DclM",
+          "increment": false,
+          "name": "seo_metadata",
+          "notNull": true,
+          "primary": false,
+          "type": "JSONB",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "lQWXedDoP1Iiuu2oFduG8",
+          "increment": false,
+          "name": "submitted_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "vPYNef0tt2UGY01dSW5RH",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "xhRLeCb5ueAuHRbXPdK3Y",
+      "indices": [
+        {
+          "fields": ["editor_id"],
+          "id": 0,
+          "name": "revisions_by_editor",
+          "unique": false
+        }
+      ],
+      "name": "article_revisions",
+      "uniqueConstraints": [
+        {
+          "fields": ["article_id", "revision_number"],
+          "id": 0,
+          "name": "article_revisions_unique_0"
+        },
+        {
+          "fields": ["article_id", "id"],
+          "id": 1,
+          "name": "article_revisions_unique_1"
+        }
+      ],
+      "x": 908,
+      "y": 470,
+      "width": 350
+    },
+    {
+      "color": "#10b981",
+      "comment": "Approval targets an exact revision. NestJS enforces independent review and author/record access.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "gA1yLYTrP-nD3w_Xtfzkd",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "ZWA3rwSml8hSkfOrs-sXl",
+          "increment": false,
+          "name": "revision_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "mfmiOaC4fI159zyN8XiQr",
+          "increment": false,
+          "name": "reviewer_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "decision IN ('approved', 'changes_requested')",
+          "comment": "",
+          "default": "",
+          "id": "gWrikV3gXrk14jOjzrb-L",
+          "increment": false,
+          "name": "decision",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "k8P35PT35_8BBY2thmJU3",
+          "increment": false,
+          "name": "comment",
+          "notNull": false,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "JXRsbfh62vQycWK_Ht6qx",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "DZVI45YA2YaWm9waV3KWL",
+      "indices": [
+        {
+          "fields": ["revision_id"],
+          "id": 0,
+          "name": "reviews_by_revision",
+          "unique": false
+        }
+      ],
+      "name": "review_decisions",
+      "uniqueConstraints": [
+        {
+          "fields": ["id", "revision_id"],
+          "id": 0,
+          "name": "review_decisions_unique_0"
+        }
+      ],
+      "x": 1338,
+      "y": 470,
+      "width": 350
+    },
+    {
+      "color": "#10b981",
+      "comment": "Publish/withdraw + article pointer/version + audit + outbox commit in one transaction. NestJS checks the referenced decision is approved and independent.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "3N0FCHfjfqmAK1soZfack",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "Iqg91CKJme_55ZtprJIuf",
+          "increment": false,
+          "name": "article_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "hnJishC3vd0cL_sDsz7sc",
+          "increment": false,
+          "name": "revision_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "4oO9LkpbpR_YGNqyPVHMW",
+          "increment": false,
+          "name": "actor_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "CEO9S1jXVkfIsnYsZdTb-",
+          "increment": false,
+          "name": "approval_id",
+          "notNull": false,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "action IN ('publish', 'withdraw') AND (action <> 'publish' OR approval_id IS NOT NULL)",
+          "comment": "",
+          "default": "",
+          "id": "Dd4sgNnGAv_doHtbnd_EA",
+          "increment": false,
+          "name": "action",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "PpM6E0lQ1-1zgfeujRo8K",
+          "increment": false,
+          "name": "version",
+          "notNull": true,
+          "primary": false,
+          "type": "BIGINT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "eDlFUhIEMpD9SJJgBcvbe",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "b-s4UuLH6EhrCpPIFPUX4",
+      "indices": [],
+      "name": "publication_history",
+      "uniqueConstraints": [
+        {
+          "fields": ["article_id", "version"],
+          "id": 0,
+          "name": "publication_history_unique_0"
+        }
+      ],
+      "x": 1768,
+      "y": 470,
+      "width": 350
+    },
+    {
+      "color": "#d97706",
+      "comment": "",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "QLFyl1h-J3r2s7BqN3Z7M",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "LmWFCp9skxR2nu5CSR7HR",
+          "increment": false,
+          "name": "name",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "06rBsgCwi4O6RxTOuCv0d",
+          "increment": false,
+          "name": "slug",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        }
+      ],
+      "id": "qQqBNREaxDFOI7s2ZeC9q",
+      "indices": [],
+      "name": "categories",
+      "uniqueConstraints": [],
+      "x": 1338,
+      "y": 970,
+      "width": 350
+    },
+    {
+      "color": "#10b981",
+      "comment": "Keep old article URLs mapped to the canonical article to issue permanent redirects after a slug change.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "lUkbFV8X2fPA1D3-k0Slr",
+          "increment": false,
+          "name": "old_slug",
+          "notNull": true,
+          "primary": true,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "cqjelWIq_vpZ2UJ6g2V63",
+          "increment": false,
+          "name": "article_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "L120ZDQvB_pldVPHcSX0o",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "19OAYKeFv51t-nJKMhH-K",
+      "indices": [],
+      "name": "article_redirects",
+      "uniqueConstraints": [],
+      "x": 908,
+      "y": 1410,
+      "width": 350
+    },
+    {
+      "color": "#d97706",
+      "comment": "",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "OxfEfgmKr_lI7YZJ3aVJC",
+          "increment": false,
+          "name": "revision_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "oaJ3DJBIr-6Y_gLOH2ex1",
+          "increment": false,
+          "name": "category_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        }
+      ],
+      "id": "j1I-1iYivS8E3FLGHqCk5",
+      "indices": [
+        {
+          "fields": ["category_id"],
+          "id": 0,
+          "name": "categories_by_category",
+          "unique": false
+        }
+      ],
+      "name": "revision_categories",
+      "uniqueConstraints": [],
+      "x": 908,
+      "y": 970,
+      "width": 350
+    },
+    {
+      "color": "#d97706",
+      "comment": "Object storage holds bytes; PostgreSQL holds metadata. Validate uploads and restrict draft media; use immutable object keys.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "w0AwHeZ4zjMPdTqOf4UDp",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "Vg9kH-FdQnA3z4-Vz6vS_",
+          "increment": false,
+          "name": "uploaded_by",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "4LXX-Qy1ZdXBGbNvbxAG-",
+          "increment": false,
+          "name": "object_key",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": true
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "inbX5Z9FV3MtYE5jBxDaR",
+          "increment": false,
+          "name": "mime_type",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "owgYFuKnUkkm36hjolKlI",
+          "increment": false,
+          "name": "byte_size",
+          "notNull": true,
+          "primary": false,
+          "type": "BIGINT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "YTeO58kWpYeMeoR991n54",
+          "increment": false,
+          "name": "width",
+          "notNull": false,
+          "primary": false,
+          "type": "INTEGER",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "ohzIDPGBSiICGRNHW_1AN",
+          "increment": false,
+          "name": "height",
+          "notNull": false,
+          "primary": false,
+          "type": "INTEGER",
+          "unique": false
+        },
+        {
+          "check": "access_state IN ('private', 'public')",
+          "comment": "",
+          "default": "",
+          "id": "WAnU3ek74UtyntJ_c8KTc",
+          "increment": false,
+          "name": "access_state",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "ML_KzHo8Ey2FURJ4QLU0v",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "jOii2g_AbQ6rGRqULZoQH",
+      "indices": [],
+      "name": "media_assets",
+      "uniqueConstraints": [],
+      "x": 48,
+      "y": 970,
+      "width": 350
+    },
+    {
+      "color": "#d97706",
+      "comment": "",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "DQqT7TAB1Md-mqkQJLKMW",
+          "increment": false,
+          "name": "revision_id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "YZHS-Zm5iukZ7BvsHKh_a",
+          "increment": false,
+          "name": "media_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "IDQMz3jQNx0zOZroBKG0d",
+          "increment": false,
+          "name": "position",
+          "notNull": true,
+          "primary": true,
+          "type": "INTEGER",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "ni7FoMgbXXIu-ne5WfjFb",
+          "increment": false,
+          "name": "purpose",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "pRPBBYUJ1s30B1ws1kJdv",
+          "increment": false,
+          "name": "alt_text",
+          "notNull": false,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        }
+      ],
+      "id": "BisoZ7h4fSJhGg0J-h36m",
+      "indices": [
+        {
+          "fields": ["media_id"],
+          "id": 0,
+          "name": "media_by_asset",
+          "unique": false
+        }
+      ],
+      "name": "revision_media",
+      "uniqueConstraints": [],
+      "x": 478,
+      "y": 970,
+      "width": 350
+    },
+    {
+      "color": "#3b82f6",
+      "comment": "Append-only application audit history; exclude credentials and session tokens from details.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "uzHnxHYL8V2oaMAZ0dvQf",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "l10A76FhSLisiaoOopYLa",
+          "increment": false,
+          "name": "actor_id",
+          "notNull": false,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "y_pv2o2kmEo-k_QESorfz",
+          "increment": false,
+          "name": "article_id",
+          "notNull": false,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "8G9CWUfHIvXEsD2QTQVwy",
+          "increment": false,
+          "name": "action",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "{}",
+          "id": "7e5P1F3GSj4q5RV4R6lmC",
+          "increment": false,
+          "name": "details",
+          "notNull": true,
+          "primary": false,
+          "type": "JSONB",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "va-HT8KwCUlKvoclPW1pv",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "fr9SzTsFkRgtixf2Nadn_",
+      "indices": [
+        {
+          "fields": ["article_id", "created_at"],
+          "id": 0,
+          "name": "audit_by_article_time",
+          "unique": false
+        }
+      ],
+      "name": "audit_events",
+      "uniqueConstraints": [],
+      "x": 478,
+      "y": 1410,
+      "width": 350
+    },
+    {
+      "color": "#3b82f6",
+      "comment": "A worker retries delivery, reconciles against the current article version, refreshes shared cache and verifies all three Next.js origins. Original SQL has a partial pending index WHERE delivered_at IS NULL.",
+      "fields": [
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "HbPPnMhCqUjFhDlnraC1U",
+          "increment": false,
+          "name": "id",
+          "notNull": true,
+          "primary": true,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "SJ11jzxTdAOq7LGyvlVYk",
+          "increment": false,
+          "name": "publication_id",
+          "notNull": true,
+          "primary": false,
+          "type": "UUID",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "sK7U51auQlWEGP5LEccHr",
+          "increment": false,
+          "name": "event_type",
+          "notNull": true,
+          "primary": false,
+          "type": "TEXT",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "afrD6rFI2d19d8M2azzt8",
+          "increment": false,
+          "name": "payload",
+          "notNull": true,
+          "primary": false,
+          "type": "JSONB",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "0",
+          "id": "HkSbQbz7E3CC7uEKZFCLR",
+          "increment": false,
+          "name": "attempts",
+          "notNull": true,
+          "primary": false,
+          "type": "INTEGER",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "2hCTEoEg7ouodpwjbCOFj",
+          "increment": false,
+          "name": "next_attempt_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "D6Cg-mKZrh41sXf_DBbeX",
+          "increment": false,
+          "name": "lease_expires_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "",
+          "id": "do0ji3nHNRV8j2beoUD_B",
+          "increment": false,
+          "name": "delivered_at",
+          "notNull": false,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        },
+        {
+          "check": "",
+          "comment": "",
+          "default": "now()",
+          "id": "YX4oY15c1vn0tYGo503dD",
+          "increment": false,
+          "name": "created_at",
+          "notNull": true,
+          "primary": false,
+          "type": "TIMESTAMPTZ",
+          "unique": false
+        }
+      ],
+      "id": "DuT_OY4mHmUhzNrz9Ux-_",
+      "indices": [
+        {
+          "fields": ["next_attempt_at"],
+          "id": 0,
+          "name": "pending_outbox_delivery",
+          "unique": false
+        }
+      ],
+      "name": "outbox_events",
+      "uniqueConstraints": [],
+      "x": 1768,
+      "y": 970,
+      "width": 350
+    }
+  ],
+  "title": "CMS — PostgreSQL schema",
+  "types": [],
+  "views": []
+}
